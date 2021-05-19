@@ -5,8 +5,10 @@
 ```shell
 ## mysql:latest pulling
 $ docker pull mysql
+
 ## check mysql image
 $ docker images
+
 ## image > container
 $ docker run -d -p 3306:3306 
   -e MYSQL_ROOT_PASSWORD=joybeanie 
@@ -18,13 +20,13 @@ $ docker run -d -p 3306:3306
 ```shell
 ## set bash env
 $ docker exec -it joybeanie-mysql bash
+
 # mysql -u root -p
+
 mysql> SHOW DATABASES; 
 ```
 
-## MyBatis
-
-### Method Mapping
+## Method Mapping
 
 ```java
 @Insert("INSERT INTO company(company_name, company_address) VALUES(#{company.name}, #{company.address})")
