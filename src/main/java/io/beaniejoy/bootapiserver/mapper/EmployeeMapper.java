@@ -1,25 +1,31 @@
 package io.beaniejoy.bootapiserver.mapper;
 
 import io.beaniejoy.bootapiserver.model.Company;
+import io.beaniejoy.bootapiserver.model.Employee;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
-public interface CompanyMapper {
+public interface EmployeeMapper {
 
-    @Insert("INSERT INTO company(company_name, company_address) VALUES(#{company.name}, #{company.address})")
+    @Insert("INSERT INTO employee(company_id, employee_name, employee_address) VALUES(#{employee.companyId}, #{employee.name}, #{employee.address})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
-    int insert(@Param("company") Company company);
+    int insert(@Param("employee") Employee employee);
 
-    @Select("SELECT * FROM company")
-    @Results(id = "CompanyMap", value = {
-            @Result(property = "name", column = "company_name"),
-            @Result(property = "address", column = "company_address")
+    @Select("SELECT * FROM employee")
+    @Results(id = "EmployeeMap", value = {
+            @Result(property = "name", column = "employee_name"),
+            @Result(property = "address", column = "employee_address"),
+            @Result(property = "companyId", column = "company_id")
     })
-    List<Company> getAll();
+    List<Employee> getAll();
 
-    @Select("SELECT * FROM company WHERE id = ${id}")
-    @ResultMap("CompanyMap")
-    public Company getById(@Param("id") Long id);
+    @Select("SELECT * FROM employee WHERE id = ${id}")
+    @ResultMap("EmployeeMap")
+    public Employee getById(@Param("id") Long id);
+
+    @Select("SELECT * FROM employee WHERE company_id = #{companyId}")
+    @ResultMap("EmployeeMap")
+    List<Employee> getByCompanyId(@Param("companyId") Long companyId);
 }
