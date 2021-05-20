@@ -1,8 +1,6 @@
 package io.beaniejoy.bootapiserver.controller;
 
-import io.beaniejoy.bootapiserver.mapper.CompanyMapper;
 import io.beaniejoy.bootapiserver.mapper.EmployeeMapper;
-import io.beaniejoy.bootapiserver.model.Company;
 import io.beaniejoy.bootapiserver.model.Employee;
 import org.springframework.web.bind.annotation.*;
 

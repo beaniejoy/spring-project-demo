@@ -2,7 +2,6 @@ package io.beaniejoy.bootapiserver.controller;
 
 import io.beaniejoy.bootapiserver.mapper.CompanyMapper;
 import io.beaniejoy.bootapiserver.model.Company;
-import io.beaniejoy.bootapiserver.service.CompanyService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,11 +12,9 @@ public class CompanyController {
 
     private final CompanyMapper companyMapper;
 
-    private final CompanyService companyService;
 
-    public CompanyController(CompanyMapper companyMapper, CompanyService companyService) {
+    public CompanyController(CompanyMapper companyMapper) {
         this.companyMapper = companyMapper;
-        this.companyService = companyService;
     }
 
     @PostMapping("")

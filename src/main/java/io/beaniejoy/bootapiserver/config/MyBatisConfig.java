@@ -1,14 +1,19 @@
-# MyBatis (XML 매핑방식)
+package io.beaniejoy.bootapiserver.config;
 
-```properties
-mybatis.type-aliases-package=io.beaniejoy.bootapiserver.mapper
-mybatis.mapper-locations=/mappers/**/*.xml
-```
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
-````java
+import javax.sql.DataSource;
+
 @Configuration
 @MapperScan(basePackages = "io.beaniejoy.bootapiserver.mapper")
-@PropertySource("classpath:/application.properties")
 public class MyBatisConfig {
 
     @Bean
@@ -34,4 +39,3 @@ public class MyBatisConfig {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }
-````
