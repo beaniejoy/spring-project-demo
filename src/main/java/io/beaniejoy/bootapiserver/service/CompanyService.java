@@ -4,6 +4,7 @@ import io.beaniejoy.bootapiserver.mapper.CompanyMapper;
 import io.beaniejoy.bootapiserver.mapper.EmployeeMapper;
 import io.beaniejoy.bootapiserver.model.Company;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,5 +29,17 @@ public class CompanyService {
         }
 
         return companyList;
+    }
+
+    @Transactional(rollbackFor = RuntimeException.class)
+    public Company add(Company company) {
+        companyMapper.insert(company);
+
+        // 레거시 시스템에서의 Exception 발생
+        if(true) {
+            throw new RuntimeException("legacy system runtime error");
+        }
+
+        return company;
     }
 }
