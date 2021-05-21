@@ -3,10 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="io.beaniejoy.bootapiserver.mapper.CompanyMapper">
-    <resultMap id="companyMap" type="io.beaniejoy.bootapiserver.model.Company">
-        <id property="id" column="id" />
-        <result property="name" column="company_name" />
-        <result property="address" column="company_address" />
+    <resultMap id="companyResult" type="Company">
+        <id column="id" property="id" />
+        <collection property="employeeList" column="id" ofType="Employee" select="io.beaniejoy.bootapiserver.mapper.EmployeeMapper.getByCompanyId" />
     </resultMap>
 
     <insert id="insert" useGeneratedKeys="true" parameterType="map" keyProperty="id">
@@ -14,11 +13,11 @@
         VALUES(#{company.name}, #{company.address})
     </insert>
 
-    <select id="getAll" resultMap="companyMap">
+    <select id="getAll" resultMap="companyResult">
         SELECT * FROM company
     </select>
 
-    <select id="getById" parameterType="map" resultMap="companyMap">
+    <select id="getById" parameterType="map" resultType="Company">
         SELECT * FROM company WHERE id = #{id}
     </select>
 </mapper>

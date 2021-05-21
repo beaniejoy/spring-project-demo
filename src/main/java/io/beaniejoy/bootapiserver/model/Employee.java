@@ -3,17 +3,9 @@ package io.beaniejoy.bootapiserver.model;
 public class Employee {
 
     private Long id;
-    private String name;
-    private String address;
+    private String employeeName;
+    private String employeeAddress;
     private Long companyId;
-
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
 
     public Long getId() {
         return id;
@@ -23,19 +15,27 @@ public class Employee {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmployeeAddress() {
+        return employeeAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEmployeeAddress(String employeeAddress) {
+        this.employeeAddress = employeeAddress;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }

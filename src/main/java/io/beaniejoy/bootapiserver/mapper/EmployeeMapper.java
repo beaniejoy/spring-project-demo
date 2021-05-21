@@ -13,5 +13,7 @@ public interface EmployeeMapper {
 
     List<Employee> getAll();
 
-    public Employee getById(@Param("id") Long id);
+    Employee getById(@Param("id") Long id);
+
+    Employee getByCompanyId(@Param("companyId") Long id);
 }

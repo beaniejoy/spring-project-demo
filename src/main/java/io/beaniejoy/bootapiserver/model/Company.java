@@ -4,15 +4,17 @@ import java.util.List;
 
 public class Company {
     private Long id;
-    private String name;
-    private String address;
+    private String companyName;
+    private String companyAddress;
     private List<Employee> employeeList;
 
-    public List<Employee> getEmployeeList() {
-        return employeeList;
+    public Company() {
     }
 
-    public void setEmployeeList(List<Employee> employeeList) {
+    public Company(Long id, String companyName, String companyAddress, List<Employee> employeeList) {
+        this.id = id;
+        this.companyName = companyName;
+        this.companyAddress = companyAddress;
         this.employeeList = employeeList;
     }
 
@@ -24,19 +26,27 @@ public class Company {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCompanyAddress() {
+        return companyAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
+    }
+
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 }
