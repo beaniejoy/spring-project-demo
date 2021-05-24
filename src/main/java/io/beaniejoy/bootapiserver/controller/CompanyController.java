@@ -12,7 +12,6 @@ public class CompanyController {
 
     private final CompanyMapper companyMapper;
 
-
     public CompanyController(CompanyMapper companyMapper) {
         this.companyMapper = companyMapper;
     }
