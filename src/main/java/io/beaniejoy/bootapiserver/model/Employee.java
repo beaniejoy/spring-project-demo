@@ -7,6 +7,16 @@ public class Employee {
     private String employeeAddress;
     private Long companyId;
 
+    public Employee() {
+    }
+
+    public Employee(Long id, String employeeName, String employeeAddress, Long companyId) {
+        this.id = id;
+        this.employeeName = employeeName;
+        this.employeeAddress = employeeAddress;
+        this.companyId = companyId;
+    }
+
     public Long getId() {
         return id;
     }
