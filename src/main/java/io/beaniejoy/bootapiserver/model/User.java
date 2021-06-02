@@ -7,14 +7,17 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
+public class User {
 
-    private Long id;
+    private String id;
 
-    private String employeeName;
+    private String name;
 
-    private String employeeAddress;
+    private String email;
 
-    private Long companyId;
+    private String password;
 
+    private String phone;
+
+    private String address;
 }

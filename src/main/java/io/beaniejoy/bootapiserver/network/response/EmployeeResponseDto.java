@@ -1,13 +1,13 @@
-package io.beaniejoy.bootapiserver.model;
+package io.beaniejoy.bootapiserver.network.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
+public class EmployeeResponseDto {
 
     private Long id;
 
@@ -16,5 +16,4 @@ public class Employee {
     private String employeeAddress;
 
     private Long companyId;
-
 }

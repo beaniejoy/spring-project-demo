@@ -1,15 +1,13 @@
-package io.beaniejoy.bootapiserver.model;
+package io.beaniejoy.bootapiserver.network.request;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
-
-    private Long id;
+public class EmployeeRequestDto {
 
     private String employeeName;
 
