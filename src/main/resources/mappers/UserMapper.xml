@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.beaniejoy.bootapiserver.mapper.UserMapper">
+
+    <select id="getUserById" parameterType="map" resultType="User">
+        SELECT *
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <select id="getUserList" resultType="User">
+        SELECT *
+        FROM user
+    </select>
+
+    <insert id="registerUser" parameterType="map">
+        INSERT INTO user
+        VALUES(#{user.name}, #{user.phone}, #{user.address})
+    </insert>
+
+    <update id="updateUser" parameterType="map">
+        UPDATE user
+        SET name=#{user.name},
+            phone=#{user.phone},
+            address=#{user.address})
+        WHERE id=#{user.id}
+    </update>
+
+    <delete id="deleteUser" parameterType="map">
+        DELETE
+        FROM user
+        WHERE id=#{id}
+    </delete>
+</mapper>

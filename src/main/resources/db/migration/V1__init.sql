@@ -24,5 +24,5 @@ CREATE TABLE `employee` (
                             PRIMARY KEY (`id`),
                             KEY `idx_employee_name` (`employee_name`),
                             KEY `company_id` (`company_id`),
-                            CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
+                            FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

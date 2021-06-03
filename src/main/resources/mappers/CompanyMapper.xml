@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.beaniejoy.bootapiserver.mapper.CompanyMapper">
+    <resultMap id="companyResult" type="Company">
+        <id column="id" property="id" />
+        <result property="companyName" column="company_name" />
+        <result property="companyAddress" column="company_address" />
+        <!--        <collection property="employeeList" column="id" ofType="Employee" select="io.beaniejoy.bootapiserver.mapper.EmployeeMapper.getByCompanyId" />-->
+        <collection property="employeeList" ofType="Employee">
+            <id property="id" column="employee_id" />
+            <result property="employeeName" column="employee_name" />
+            <result property="employeeAddress" column="employee_address" />
+        </collection>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" parameterType="map" keyProperty="id">
+        INSERT INTO company(company_name, company_address)
+        VALUES(#{company.name}, #{company.address})
+    </insert>
+
+    <select id="getAll" resultMap="companyResult">
+        SELECT
+               c.id as id,
+               c.company_name as company_name,
+               c.company_address as company_address,
+               e.id as employee_id,
+               e.employee_name as employee_name,
+               e.employee_address as employee_address
+        FROM company c
+            left outer join employee e on c.id = e.company_id
+    </select>
+
+    <select id="getById" parameterType="map" resultType="Company">
+        SELECT * FROM company WHERE id = #{id}
+    </select>
+</mapper>
