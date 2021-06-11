@@ -1,21 +1,14 @@
 package io.beaniejoy.bootapiserver.network.request;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRequestDto {
-
-    private String name;
+public class LoginDto {
 
     private String email;
-
     private String password;
-
-    private String phone;
-
-    private String address;
 }

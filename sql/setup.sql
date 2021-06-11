@@ -1,12 +1,17 @@
 CREATE TABLE `user` (
-                        `id` bigint NOT NULL AUTO_INCREMENT,
-                        `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-                        `email` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-                        `password` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-                        `phone` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-                        `address` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-                        PRIMARY KEY (`id`)
+                        `user_id` int NOT NULL AUTO_INCREMENT,
+                        `user_name` varchar(50)  NOT NULL,
+                        `email` varchar(50) NOT NULL,
+                        `password` varchar(500) NOT NULL,
+                        `address` varchar(100) NOT NULL,
+                        `phone_number` varchar(11) NOT NULL,
+                        `seller` tinyint(1) NOT NULL,
+                        `salt` varchar(20) NOT NULL,
+                        PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `role` (`role_name`) VALUES ('ROLE_ADMIN');
+INSERT INTO `role` (`role_name`) VALUES ('ROLE_USER');
 
 CREATE TABLE `company` (
                            `id` bigint NOT NULL AUTO_INCREMENT,
