@@ -1,8 +1,3 @@
-# Spring Project For Studying
+# login
 
-- MyBatis
-  - Method Mapping
-  - XML Mapping
-- Flyway
-  - DB Migration
-- login
+JWT 적용 Test
