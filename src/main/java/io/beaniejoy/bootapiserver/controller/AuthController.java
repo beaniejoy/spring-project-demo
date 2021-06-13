@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -26,8 +28,9 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<TokenDto> signin(@RequestBody LoginDto resource) {
         UserResponseDto user = userService.authenticate(resource.getEmail(), resource.getPassword());
-        String jwtToken = jwtUtil.createToken(user, "user");
+        String jwtToken = jwtUtil.createAccessToken(user, "user");
 
+        System.out.println("What is it?: " + UUID.randomUUID().toString().replace("-", ""));
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", "Bearer " + jwtToken);
         return new ResponseEntity<>(new TokenDto(jwtToken), httpHeaders, HttpStatus.CREATED);

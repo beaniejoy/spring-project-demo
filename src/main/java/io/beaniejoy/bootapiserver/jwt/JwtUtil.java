@@ -25,15 +25,16 @@ public class JwtUtil {
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String createToken(UserResponseDto authentication, String claimKey) {
+    public String createAccessToken(UserResponseDto authentication, String claimKey) {
 
-        Long now = (new Date()).getTime();
-        Date validity = new Date(now + this.tokenValidityInMilliseconds);
+        Date now = new Date();
+        Date validity = new Date(now.getTime() + this.tokenValidityInMilliseconds);
 
         return Jwts.builder()
                 .setSubject(authentication.getEmail())
                 .claim(claimKey, authentication)
                 .signWith(key, SignatureAlgorithm.HS512)
+                .setIssuedAt(now)
                 .setExpiration(validity)
                 .compact();
     }
