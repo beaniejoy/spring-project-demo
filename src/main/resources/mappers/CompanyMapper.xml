@@ -17,7 +17,7 @@
 
     <insert id="insert" useGeneratedKeys="true" parameterType="map" keyProperty="id">
         INSERT INTO company(company_name, company_address)
-        VALUES(#{company.name}, #{company.address})
+        VALUES(#{company.companyName}, #{company.companyAddress})
     </insert>
 
     <select id="getAll" resultMap="companyResult">
@@ -32,7 +32,23 @@
             left outer join employee e on c.id = e.company_id
     </select>
 
-    <select id="getById" parameterType="map" resultType="Company">
-        SELECT * FROM company WHERE id = #{id}
+    <select id="getById" parameterType="map" resultMap="companyResult">
+        SELECT
+            c.id as id,
+            c.company_name as company_name,
+            c.company_address as company_address,
+            e.id as employee_id,
+            e.employee_name as employee_name,
+            e.employee_address as employee_address
+        FROM company c
+             left outer join employee e on c.id = e.company_id
+        WHERE c.id = #{id}
     </select>
+
+    <update id="update" parameterType="map">
+        UPDATE company
+        SET company_name = #{company.companyName},
+            company_address = #{company.companyAddress}
+        WHERE id = #{company.id}
+    </update>
 </mapper>

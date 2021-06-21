@@ -14,4 +14,6 @@ public interface CompanyMapper {
     List<Company> getAll();
 
     Company getById(@Param("id") Long id);
+
+    void update(@Param("company") Company company);
 }

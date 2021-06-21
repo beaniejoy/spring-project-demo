@@ -19,16 +19,36 @@ public class CompanyService {
     private final CompanyMapper companyMapper;
 
     public void postCompany(CompanyRequestDto resource) {
-        Company company = new Company(resource.getCompanyName(), resource.getCompanyAddress());
+        Company company = Company.builder()
+                .companyName(resource.getCompanyName())
+                .companyAddress(resource.getCompanyAddress())
+                .build();
+
         companyMapper.insert(company);
     }
-
     public List<Company> getAll() {
-        return companyMapper.getAll();
+        List<Company> companyList = companyMapper.getAll();
+
+        CompanyRequestDto dto = CompanyRequestDto.builder()
+                .companyName("update된 company")
+                .companyAddress("update된 company address")
+                .build();
+
+        update(companyList.get(0).getId(), dto);
+        return companyList;
     }
 
     public Company getById(Long id) {
         return companyMapper.getById(id);
+    }
+
+    public void update(Long id, CompanyRequestDto resource) {
+        Company company = companyMapper.getById(id);
+        company.updateInfo(
+                resource.getCompanyName(),
+                resource.getCompanyAddress());
+
+        companyMapper.update(company);
     }
 
 }

@@ -1,5 +1,6 @@
 package io.beaniejoy.bootapiserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ public class Employee {
 
     private String employeeAddress;
 
+    @JsonIgnore
     private Long companyId;
 
 }

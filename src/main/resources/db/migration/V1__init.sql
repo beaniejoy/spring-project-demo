@@ -15,8 +15,7 @@ CREATE TABLE `company` (
                            `id` bigint NOT NULL AUTO_INCREMENT,
                            `company_name` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
                            `company_address` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-                           PRIMARY KEY (`id`),
-                           KEY `idx_company_name` (`company_name`)
+                           PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `employee` (
@@ -25,7 +24,6 @@ CREATE TABLE `employee` (
                             `employee_name` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
                             `employee_address` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
                             PRIMARY KEY (`id`),
-                            KEY `idx_employee_name` (`employee_name`),
                             KEY `company_id` (`company_id`),
                             FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
